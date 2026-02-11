@@ -227,7 +227,7 @@ export const Slide3Business: React.FC = () => (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 max-w-4xl">
       {[
         { value: 100, suffix: "+", label: "Countries", delay: 0.3 },
-        { value: 340, suffix: "M+", label: "Gig Workers", delay: 0.5 },
+        { value: 6, suffix: "M+", label: "Gig Workers", delay: 0.5 },
         { value: 2, suffix: "M+", label: "Overall Articles / Day", delay: 0.7 },
         { value: 70, suffix: "%", label: "Leaders & Managers Read News", delay: 0.9 },
       ].map((stat, i) => (
