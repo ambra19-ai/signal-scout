@@ -476,7 +476,7 @@ export const Slide10Scales: React.FC = () => {
     { icon: Shield, title: "Data Privacy", sub: "Regulations & transparency monitoring", color: "text-pink-500" },
     { icon: Zap, title: "Innovation & Disruption", sub: "Tracking tech news & competitor moves", color: "text-yellow-400" },
     { icon: MessageSquare, title: "Communications", sub: "Sentiment analysis on news & PR", color: "text-blue-500" },
-    { icon: Brain, title: "AI & Platform Governance", sub: "Compliance tracking and monitoring", color: "text-emerald-500" },
+    { icon: Brain, title: "Gig-workers News", sub: "News about the gig-workers in your ecosystem", color: "text-emerald-500" },
   ];
   const { width, height } = useWindowSize();
 
