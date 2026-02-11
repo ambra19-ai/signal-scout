@@ -6,18 +6,18 @@ import {
   Slide1Title,
   Slide2Problem,
   Slide3Business,
-  Slide4Question,
+  // Slide4Question,
   Slide5Solution,
   Slide6HowItWorks,
-  Slide7TechStack,
-  Slide8Slack,
-  Slide9Impact,
-  Slide10Scales,
+  // Slide7TechStack,
+  // Slide8Slack,
+  // Slide9Impact,
   Slide11WhyNow,
-  Slide12CTA,
+  Slide10Scales,
+  // Slide12CTA,
 } from "./slides";
 
-const TOTAL_SLIDES = 12;
+const TOTAL_SLIDES = 7;
 
 const slideVariants = {
   enter: (direction: number) => ({
@@ -58,9 +58,14 @@ export const Presentation: React.FC = () => {
   }, [next, prev]);
 
   const slides = [
-    Slide1Title, Slide2Problem, Slide3Business, Slide4Question,
-    Slide5Solution, Slide6HowItWorks, Slide7TechStack, Slide8Slack,
-    Slide9Impact, Slide10Scales, Slide11WhyNow, Slide12CTA,
+    Slide1Title, Slide2Problem, Slide3Business, 
+    // Slide4Question,
+    Slide5Solution, Slide6HowItWorks, // Slide7TechStack, 
+    // Slide8Slack,
+    // Slide9Impact, 
+    Slide11WhyNow,
+    Slide10Scales
+    // Slide12CTA,
   ];
 
   const CurrentSlide = slides[current];
