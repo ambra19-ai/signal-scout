@@ -283,113 +283,67 @@ export const Slide4Question: React.FC = () => (
   </div>
 );
 
-export const Slide5Solution: React.FC = () => (
-  <div className="h-full slide-gradient-1 flex flex-col items-center justify-center px-4 md:px-8 relative">
-    {/* "Solution" tag in top left */}
-    <div className="absolute top-6 left-6 z-20">
-      <span className="glass px-10 py-2 rounded-md text-s font-semibold text-green-600 uppercase tracking-wide shadow-lg">
-        Solution
-      </span>
-    </div>
-    {/* <FadeUp>
-      <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">The Solution</p>
-    </FadeUp> */}
-    <FadeUp delay={0.1}>
-      <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground text-center mb-3">
-        Meet the Gig Work News Agent
-      </h2>
-    </FadeUp>
-    <FadeUp delay={0.2}>
-      <p className="text-muted-foreground text-base md:text-lg text-center max-w-2xl mb-8 font-body">
-        A fully autonomous AI agent that delivers prioritized, actionable gig-economy news directly in Slack.
-      </p>
-    </FadeUp>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl w-full items-start">
-      <FadeUp delay={0.4}>
-        <div className="space-y-3">
-          {[
-            { icon: Filter, text: "Filters from 500+ news sources per run for gig-worker-relevant stories" },
-            { icon: ShieldAlert, text: "Ranks and prioritizes news by High / Medium / Low risk" },
-            { icon: Send, text: "Delivers news directly to your Slack channel" },
-            { icon: BookOpen, text: "Provides links to full sources for deeper reading" },
-            { icon: Brain, text: "Powered by Toqan AI (under the hood)" },
-            { icon: BarChart3, text: "Defines formatting and summary rules for readability" },
-            { icon: Rocket, text: "Deployed securely with AWS, our partner" },
-            { icon: Clock, text: "Runs automatically 3× per week" },
-          ].map((f, i) => (
-            <GlassCard key={i} className="flex items-center gap-3 py-3 px-4">
-              <f.icon size={18} className="text-primary shrink-0" />
-              <span className="text-sm text-foreground/80 font-body">{f.text}</span>
-            </GlassCard>
-          ))}
-        </div>
-      </FadeUp>
-
-      <FadeUp delay={0.6}>
-        <SlackPreview />
-      </FadeUp>
-    </div>
-  </div>
-);
-
-export const Slide6HowItWorks: React.FC = () => {
+export const Slide5Solution: React.FC = () => {
   const steps = [
     { icon: Globe, label: "Scans the Web", sub: "Multiple reliable News APIs" },
     { icon: Newspaper, label: "500+ Articles", sub: "Per Run with sources" },
     { icon: Filter, label: "Filters", sub: "Gig-Economy Only or Custom" },
-    { icon: ShieldAlert, label: "Risk Assessment", sub: "High / Med / Low" },
+    { icon: ShieldAlert, label: <span style={{ color: "red" }}>Risk Assessment</span>, sub: "High / Med / Low" },
     { icon: Send, label: "Slack Integration", sub: "Slack App that sends news" },
   ];
 
   return (
-    <div className="h-full slide-gradient-3 flex flex-col items-center justify-center px-8 relative">
-      {/* "Tech stack" tag in top left */}
+    <div className="h-full slide-gradient-1 flex flex-col items-center justify-center px-4 md:px-8 relative">
+      {/* "Solution" tag in top left */}
       <div className="absolute top-6 left-6 z-20">
-        <span className="glass px-10 py-2 rounded-md text-s font-semibold text-blue-600 uppercase tracking-wide shadow-lg">
-          Workflow
+        <span className="glass px-10 py-2 rounded-md text-s font-semibold text-green-600 uppercase tracking-wide shadow-lg">
+          Solution
         </span>
       </div>
-      <FadeUp>
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground text-center mb-4">
-          From <span className="text-primary">500</span> Articles to <span className="text-accent">5-10</span> Insights
-        </h2>
-        <p className="text-muted-foreground text-center font-body mb-12">No Human in the loop.</p>
-      </FadeUp>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full items-center">
+        {/* Workflow cards */}
+        <FadeUp delay={0.2}>
+          <div>
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
+              {steps.map((step, i) => (
+                <React.Fragment key={i}>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 + i * 0.2 }}
+                  >
+                    <GlassCard
+                      className={
+                        "text-center w-36 md:w-40 " +
+                        // Highlight the 4th (Risk Assessment) card in red glow
+                        (step.label === "Risk Assessment" ? "glow-red" : "glow-blue")
+                      }
+                    >
+                      <step.icon size={28} className="text-primary mx-auto mb-2" />
+                      <p className="font-display font-bold text-foreground text-sm">{step.label}</p>
+                      <p className="text-xs text-muted-foreground font-body">{step.sub}</p>
+                    </GlassCard>
+                  </motion.div>
+                  {i < steps.length - 1 && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6 + i * 0.2 }}
+                    >
+                      <ChevronRight className="text-primary/50" size={20} />
+                    </motion.div>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </FadeUp>
 
-      <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 max-w-5xl">
-        {steps.map((step, i) => (
-          <React.Fragment key={i}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 + i * 0.2 }}
-            >
-              <GlassCard className="text-center w-36 md:w-40 glow-blue">
-                <step.icon size={28} className="text-primary mx-auto mb-2" />
-                <p className="font-display font-bold text-foreground text-sm">{step.label}</p>
-                <p className="text-xs text-muted-foreground font-body">{step.sub}</p>
-              </GlassCard>
-            </motion.div>
-            {i < steps.length - 1 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6 + i * 0.2 }}
-              >
-                <ChevronRight className="text-primary/50" size={20} />
-              </motion.div>
-            )}
-          </React.Fragment>
-        ))}
+        {/* Slack Frame */}
+        <FadeUp delay={0.4}>
+          <SlackPreview />
+        </FadeUp>
       </div>
-
-      <FadeUp delay={1.6}>
-        <GlassCard className="mt-12 max-w-lg text-center glow-pink">
-          <p className="text-foreground font-body font-semibold text-base mb-1">Your digital newspaper.</p>
-          <p className="text-foreground/80 font-body text-sm">No manual input. No chasing updates.</p>
-        </GlassCard>
-      </FadeUp>
     </div>
   );
 };
@@ -706,35 +660,65 @@ export const Slide11WhyNow: React.FC = () => {
   );
 };
 
-// export const Slide12CTA: React.FC = () => (
-//   <div className="h-full slide-gradient-4 flex flex-col items-center justify-center px-8">
-//     <FadeUp>
-//       <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground text-center leading-tight">
-//         From News to <span className="text-primary">Insight</span>.<br />
-//         From Insight to <span className="text-accent">Action</span>.
-//       </h2>
-//     </FadeUp>
+export const Slide12CTA: React.FC = () => {
+  const { width, height } = useWindowSize?.() || { width: undefined, height: undefined };
 
-//     <div className="flex flex-wrap justify-center gap-4 mt-12">
-//       {[
-//         { icon: Globe, title: "Scale Across Regions", sub: "Expand monitoring globally" },
-//         { icon: Rocket, title: "New Verticals", sub: "Payments, e-commerce, AI" },
-//         { icon: Award, title: "Alerts & Recommendations", sub: "Turn insights into actions" },
-//       ].map((cta, i) => (
-//         <FadeUp key={i} delay={0.4 + i * 0.15}>
-//           <GlassCard className="text-center w-56 hover:border-primary/30 transition-colors cursor-default glow-blue">
-//             <cta.icon size={28} className="text-primary mx-auto mb-3" />
-//             <p className="font-display font-bold text-foreground text-sm">{cta.title}</p>
-//             <p className="text-xs text-muted-foreground font-body mt-1">{cta.sub}</p>
-//           </GlassCard>
-//         </FadeUp>
-//       ))}
-//     </div>
+  return (
+    <div className="h-full slide-gradient-4 flex flex-col items-center justify-center px-8 relative">
+      {/* Confetti effect */}
+      <div className="pointer-events-none fixed inset-0 z-50">
+        {/* Show confetti only if window size is available */}
+        {typeof width === "number" && typeof height === "number" && (
+          <ReactConfetti width={width} height={height} numberOfPieces={180} recycle={false} gravity={0.12} />
+        )}
+      </div>
+      {/* "Next Steps" tag in top left */}
+      <div className="absolute top-6 left-6 z-20">
+        <span className="glass px-10 py-2 rounded-md text-s font-semibold text-pink-600 uppercase tracking-wide shadow-lg">
+          Next Steps
+        </span>
+      </div>
+      <FadeUp>
+        <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground text-center leading-tight">
+          Connecting the <span className="text-primary">Prosus Ecosystem</span><br />
+          From <span className="text-accent">Local</span> Insights to <span className="text-primary">Global</span> Impact
+        </h2>
+      </FadeUp>
 
-//     <FadeUp delay={1}>
-//       <p className="font-display text-xl md:text-2xl font-bold text-muted-foreground text-center mt-14">
-//         This is what <span className="text-foreground">applied AI for leadership</span> looks like.
-//       </p>
-//     </FadeUp>
-//   </div>
-// );
+      <div className="flex flex-wrap justify-center gap-4 mt-12">
+        {[
+          {
+            icon: Globe,
+            title: "Global & Local Trends",
+            sub: "Track market sentiment worldwide and compare to your ecosystem."
+          },
+          {
+            icon: Rocket,
+            title: "Sentiment Analysis Reports",
+            sub: "Monitor trends over time, see positive & negative movements, opportunity & risk."
+          },
+          {
+            icon: Award,
+            title: "Ecosystem Intelligence",
+            sub: "Inform all teams in Prosus and beyond, fostering collaboration & actionable insight."
+          },
+        ].map((cta, i) => (
+          <FadeUp key={i} delay={0.4 + i * 0.15}>
+            <GlassCard className="text-center w-56 hover:border-primary/30 transition-colors cursor-default glow-blue">
+              <cta.icon size={28} className="text-primary mx-auto mb-3" />
+              <p className="font-display font-bold text-foreground text-sm">{cta.title}</p>
+              <p className="text-xs text-muted-foreground font-body mt-1">{cta.sub}</p>
+            </GlassCard>
+          </FadeUp>
+        ))}
+      </div>
+
+      <FadeUp delay={1}>
+        <p className="font-display text-xl md:text-2xl font-bold text-primary text-center mt-14">
+          Bringing global perspectives home. <br />
+          <span className="text-muted-foreground">Sentiment analysis reports keep every team aligned on the trends that matter most—across Prosus, in every country.</span>
+        </p>
+      </FadeUp>
+    </div>
+  );
+};
